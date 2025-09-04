@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bistro Bliss - Admin Dashboard</title>
+    <title>Bistro Bliss - Delivery  Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Rufina:wght@400;700&family=Racing+Sans+One:wght@400&family=Radio+Canada:wght@300;400;500;600;700&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/frontdesk.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -30,13 +30,13 @@
                 <div class="user-avatar">NK</div>
                 <div class="user-info">
                     <h4>Nkwambi Honour</h4>
-                    <p>front desk agent</p>
+                    <p>Delivery agent</p>
                 </div>
             </div>
 
             <!--navigation menu-->
                     <nav class="nav-menu">
-                    <a href="{{ route('admin.dashboard') }}"class="nav-item {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('delivery-dashboard') }}"class="nav-item {{ Route::is('delivery-dashboard') ? 'active' : '' }}">
                     <i class="fas fa-tachometer-alt"></i>
                      Dashboard
                     </a>
@@ -44,12 +44,12 @@
 
                     <a href="{{ route('ManageMenu') }}" class="nav-item {{ Route::is('ManageMenu') ? 'active' : '' }}">
                         <i class="fas fa-cogs"></i>
-                        Manage Menu
+                        Assigned deliveries
                     </a>
 
-                    <a href="{{ route('manageusers') }}" class="nav-item {{ Route::is('manageusers') ? 'active' : '' }}">
+                    <a href="{{ route('delivery.status') }}" class="nav-item {{ Route::is('delivery.status') ? 'active' : '' }}">
                         <i class="fas fa-users"></i>
-                        Manage Users
+                        My status
                     </a>
 
             
@@ -95,7 +95,7 @@
             <!-- Header -->
             <header class="header">
                 <div class="header-left">
-                    <h1>Admin dash board</h1>
+                    <h1>Delivery dash board</h1>
                     <p>Bistro bliss restaurant</p>
                 </div>
                 <div class="header-actions">

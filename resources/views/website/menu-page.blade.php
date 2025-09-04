@@ -78,7 +78,9 @@
          
         <a href="{{ route('add2cart.add', $item->id) }}" class="add-to-cart-icon">
           <i class="fa-solid fa-cart-plus"></i>
+          
         </a>
+        <h4> Add to cart</h4>
       </div>
       
     @endforeach

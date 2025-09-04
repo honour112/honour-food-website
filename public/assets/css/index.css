@@ -11,16 +11,18 @@
 
 /* Add to Cart  */
 
-  .add-to-cart-icon {
+  .add-to-cart-icon i{
   color:  #a52c2c;
   margin-top: 10px;
   display: inline-block;
   transition: transform 0.2s;
+  font-size: 2.5rem;
+  
 }
 
 .add-to-cart-icon:hover {
   transform: scale(1.2);
-  color: #ff3b3b;
+  color: #a32e1e;
 }
 /* Navigation */
      

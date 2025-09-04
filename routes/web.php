@@ -10,8 +10,9 @@ use App\Http\Controllers\ReviewdashboardController;
 use App\Http\Controllers\ReviewPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderfrontdeskController;
- use App\Http\Controllers\OrderConfirmationController;
+use App\Http\Controllers\OrderConfirmationController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\DeliveryController;
 use App\Models\Order;
 // use app\Http\Controllers\admin\AdminManagemenuController;
 
@@ -161,3 +162,16 @@ Route::middleware('auth')->group(function () {
     // Delete user
     Route::delete('/admin/users/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 });
+// Delivery Dashboard Route
+
+Route::get("layout",function(){
+    return view('delivery.layout');
+});
+ 
+Route::get('/delivery-dashboard', [AuthController::class, 'showLoginForm'])->name('delivery-dashboard');
+Route::get('/delivery-dashboard', [DeliveryController::class, 'Showdelivery'])->name('delivery-dashboard');
+
+
+// Delivery status routes
+Route::get('/delivery/status', [DeliveryController::class, 'showStatus'])->name('delivery.status');
+Route::post('/delivery/status/toggle', [DeliveryController::class, 'toggleStatus'])->name('delivery.status.toggle');

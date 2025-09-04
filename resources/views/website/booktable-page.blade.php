@@ -44,18 +44,7 @@
   class="hamburger-icon" 
   id="hamburger-button"
 />
-   @if(session('success'))
-<div class="alert">{{session('success')}}</div>
-<style>
-    .alert {
-        padding: 12px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: lightgreen;
-    }
-</style>
-@endif
+  
 
     <!-- Book a Table button -->
     </nav>
@@ -67,6 +56,18 @@
       <div class="booking-map-bg">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537363155047!3d-37.81627974202198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f8e7fb%3A0x5045675218ce6e0!2s123%20Bridge%20St%2C%20Nowhere%20Land%2C%20LA%2012345%2C%20United%20States!5e0!3m2!1sen!2sng!4v1692460800000!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+       @if(session('success'))
+<div class="alert">{{session('success')}}</div>
+<style>
+    .alert {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: lightgreen;
+    }
+</style>
+@endif
       <div class="booking-header">
         <h1>Book a Table</h1>
         <p>Reserve your spot for an unforgettable dining experience. Please fill out the form below to book your table.</p>
