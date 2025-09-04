@@ -30,9 +30,9 @@ class AuthController extends Controller
             if ($role === 'admin') {
                 return redirect()->route('admin.dashboard');
             } elseif ($role === 'frontdesk') {
-                return redirect()->route('frontdesk.dashboard');
+                return redirect()->route('frontdesk-dashboard');
             } elseif ($role === 'delivery') {
-                return redirect()->route('delivery.dashboard'); // create this route
+                return redirect()->route('delivery-dashboard'); // create this route
             } else {
                 Auth::logout();
                 return redirect()->route('login')->withErrors('Role not recognized.');

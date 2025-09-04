@@ -146,7 +146,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin dashboard (only accessible by logged-in admin)
 Route::get('/admin/dashboard', function () {
-    return view('Admin.Admindashboard'); // your admin dashboard Blade
+    return view('admin.Admindashboard'); // your admin dashboard Blade
 })->name('admin.dashboard')->middleware('auth');
 
 
