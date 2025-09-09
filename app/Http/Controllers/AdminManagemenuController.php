@@ -8,6 +8,7 @@ use App\Models\MenuItem;
 class AdminManagemenuController extends Controller
 {
     // Show the create menu form
+
     public function AddMenu()
     {
         return view('Admin.ManageMenu');

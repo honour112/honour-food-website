@@ -21,8 +21,12 @@ return new class extends Migration
             $table->decimal('total', 10, 2);
             $table->enum('order_status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->enum('payment_status', ['unpaid', 'paid'])->default('unpaid');
-            $table->timestamps();
             
+            // New column to assign delivery agent
+            $table->unsignedBigInteger('delivery_agent_id')->nullable();
+            $table->foreign('delivery_agent_id')->references('id')->on('users')->onDelete('set null');
+
+            $table->timestamps();
         });
     }
 
@@ -31,6 +35,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign(['delivery_agent_id']);
+            $table->dropColumn('delivery_agent_id');
+        });
+
         Schema::dropIfExists('orders');
     }
 };

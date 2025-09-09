@@ -1,136 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Cart</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="/assets/css/cart.css">
-<style>
-    /* Hide checkout by default */
-    .cart-checkout { display: none; margin-top: 20px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/assets/css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-<div class="cart-shell">
-    <h1 class="cart-title">
-        <i class="fa-solid fa-cart-shopping"></i> Your Cart
-    </h1>
-
-    {{-- Success & Error Messages --}}
-    @if(session('success'))
-        <div class="cart-alert cart-alert-good">
-            <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-        </div>
-    @endif
-    @if(session('error'))
-        <div class="cart-alert cart-alert-bad">
-            <i class="fa-solid fa-circle-xmark"></i> {{ session('error') }}
-        </div>
-    @endif
-    @if(session('order_success'))
-        <div class="cart-alert cart-alert-good">
-            <i class="fa-solid fa-circle-check"></i> {{ session('order_success') }}
-        </div>
-    @endif
-
-    @if($cart && count($cart) > 0)
-        {{-- Cart Table --}}
-        <form action="{{ route('cart.update') }}" method="POST" class="cart-form">
-            @csrf
-            <table class="cart-board">
-                <thead>
-                    <tr>
-                        <th><i class="fa-solid fa-burger"></i> Item</th>
-                        <th><i class="fa-solid fa-tag"></i> Price</th>
-                        <th><i class="fa-solid fa-hashtag"></i> Quantity</th>
-                        <th><i class="fa-solid fa-money-bill"></i> Subtotal</th>
-                        <th><i class="fa-solid fa-gear"></i> Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($cart as $id => $item)
-                        <tr>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ number_format($item['price'], 0, ',', '.') }} FCFA</td>
-                            <td>
-                                <input type="number" 
-                                       name="quantities[{{ $id }}]" 
-                                       value="{{ $item['quantity'] }}" 
-                                       min="1"
-                                       class="cart-count">
-                            </td>
-                            <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} FCFA</td>
-                            <td>
-                                <a href="{{ route('cart.remove', ['id' => $id]) }}" class="cart-drop">
-                                    <i class="fa-solid fa-trash"></i> Delete
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            <div class="cart-steps">
-                <button type="submit" class="btn-cart btn-cart-main">
-                    <i class="fa-solid fa-rotate-right"></i> Update Cart
-                </button>
-                <a href="{{ route('menu-page') }}" class="btn-cart btn-cart-ghost">
-                    <i class="fa-solid fa-utensils"></i> Continue Shopping
-                </a>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1> 
+                 <img src="/assets/images/icons/japanese-food (1).png" alt="Bistro Bliss Logo" class="logo"> Bistro Bliss</h1>
             </div>
-        </form>
+            <a href="{{ route('menu-page') }}" class="nav-btn">
+                <i class="fa-solid fa-utensils"></i> Continue Shopping
+            </a>
+        </header>
 
-        {{-- Cart Total --}}
-        <h3 class="cart-total">
-            <i class="fa-solid fa-wallet"></i> Total: {{ number_format($total, 0, ',', '.') }} FCFA
-        </h3>
+        <div class="main-content">
+            <!-- CART SECTION -->
+            @if($cart && count($cart) > 0)
+            <div id="cart-section" class="section cart-container">
+                <div class="cart-header">
+                    <h2><i class="fas fa-shopping-bag"></i> Shopping Cart</h2>
+                    <span class="cart-count">{{ count($cart) }} items</span>
+                </div>
 
-        {{-- Checkout Toggle --}}
-        <button type="button" id="checkout-toggle" class="btn-cart btn-cart-main">
-            <i class="fa-solid fa-cash-register"></i> Proceed to Checkout
-        </button>
+                <!-- Success & Error Messages -->
+                @if(session('success'))
+                    <div class="cart-alert cart-alert-good">
+                        <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="cart-alert cart-alert-bad">
+                        <i class="fa-solid fa-circle-xmark"></i> {{ session('error') }}
+                    </div>
+                @endif
 
-        {{-- Checkout Form --}}
-        <form action="{{ route('checkout') }}" method="POST" class="cart-checkout">
-            @csrf
-            <h2 class="checkout-title"><i class="fa-solid fa-cash-register"></i> Checkout</h2>
+                <!-- Cart Table -->
+                <form action="{{ route('cart.update') }}" method="POST" class="cart-form">
+                    @csrf
+                    <table class="cart-board">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Subtotal</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($cart as $id => $item)
+                                <tr>
+                                    <td>{{ $item['name'] }}</td>
+                                    <td>{{ number_format($item['price'], 0, ',', '.') }} FCFA</td>
+                                    <td>
+                                        <input type="number" name="quantities[{{ $id }}]" value="{{ $item['quantity'] }}" min="1" class="cart-count">
+                                    </td>
+                                    <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} FCFA</td>
+                                    <td>
+                                        <a href="{{ route('cart.remove', ['id' => $id]) }}" class="cart-drop">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-            <label><i class="fa-solid fa-user"></i> Name:</label>
-            <input type="text" name="name" class="checkout-field" required>
+                    <div class="cart-summary">
+                        <div class="summary-line">
+                            <span>Total</span>
+                            <span>{{ number_format($total, 0, ',', '.') }} FCFA</span>
+                        </div>
+                    </div>
 
-            <label><i class="fa-solid fa-phone"></i> Phone:</label>
-            <input type="text" name="phone" class="checkout-field" required>
+                    <div class="cart-steps">
+                        <button type="submit" class="btn-cart btn-cart-main">
+                            <i class="fa-solid fa-rotate-right"></i> Update Cart
+                        </button>
+                        <button type="button" id="checkout-toggle" class="btn-cart btn-cart-pass">
+                            <i class="fa-solid fa-cash-register"></i> Proceed to Checkout
+                        </button>
+                    </div>
+                </form>
+            </div>
+            @else
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>Your Order Was placed successfully you will receive a mail once it has been processed</p>
+                </div>
+            @endif
 
-            <label><i class="fa-solid fa-location-dot"></i> Location:</label>
-            <textarea name="location" class="checkout-field"></textarea>
+            <!-- CHECKOUT SECTION -->
+            <div id="checkout-section" class="section checkout-container" style="display:none;">
+                <div class="checkout-header">
+                    <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Checkout</h2>
+                    <div class="secure-badge">
+                        <i class="fas fa-lock"></i> Secure checkout
+                    </div>
+                </div>
 
-            <label><i class="fa-solid fa-money-check-dollar"></i> Payment Method:</label>
-            <select name="payment_method" class="checkout-field" required>
-                <option value="Mobile Money">Mobile Money</option>
-                <option value="Cash on Delivery">Cash on Delivery</option>
-            </select>
+                <form action="{{ route('checkout') }}" method="POST" class="checkout-form">
+                    @csrf
+                    <!-- Step 1 -->
+                    <div id="step-1" class="form-step active">
+                        <h3>Contact & Delivery Info</h3>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="text" name="phone" placeholder="Phone Number" required>
+                        <textarea name="location" placeholder="Delivery Address" required></textarea>
+                        <input type="email" name="email" placeholder="Email (optional)">
+                        <button type="button" id="next-btn" class="submit-btn">Continue to Payment</button>
+                    </div>
 
-            <label><i class="fa-solid fa-envelope"></i> Email:</label>
-            <input type="email" name="email" class="checkout-field">
+                    <!-- Step 2 -->
+                    <div id="step-2" class="form-step" style="display:none;">
+                        <h3>Payment Method</h3>
+                        <select name="payment_method" required>
+                            <option value="Mobile Money">Mobile Money</option>
+                            <option value="Cash on Delivery">Cash on Delivery</option>
+                        </select>
+                        <div class="form-actions">
+                            <button type="button" id="prev-btn" class="outline-btn">Back</button>
+                            <button type="submit" class="submit-btn">Place Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-            <button type="submit" class="btn-cart btn-cart-pass">
-                <i class="fa-solid fa-paper-plane"></i> Place Order
-            </button>
-        </form>
-    @endif
-</div>
+    <!-- JS -->
+    <script>
+        const checkoutToggle = document.getElementById('checkout-toggle');
+        const checkoutSection = document.getElementById('checkout-section');
+        const backBtn = document.getElementById('back-btn');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
 
-{{-- JS for toggle --}}
-<script>
-    const toggleBtn = document.getElementById('checkout-toggle');
-    const checkoutForm = document.querySelector('.cart-checkout');
+        checkoutToggle?.addEventListener('click', () => {
+            checkoutSection.style.display = 'block';
+        });
 
-    toggleBtn.addEventListener('click', () => {
-        checkoutForm.style.display = checkoutForm.style.display === 'block' ? 'none' : 'block';
-    });
-</script>
+        backBtn?.addEventListener('click', () => {
+            checkoutSection.style.display = 'none';
+        });
 
+        nextBtn?.addEventListener('click', () => {
+            step1.style.display = 'none';
+            step2.style.display = 'block';
+        });
+
+        prevBtn?.addEventListener('click', () => {
+            step2.style.display = 'none';
+            step1.style.display = 'block';
+        });
+    </script>
 </body>
 </html>

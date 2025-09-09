@@ -42,4 +42,7 @@ class OrderfrontdeskController extends Controller
 
         return redirect()->back()->with('success', 'Order declined successfully!');
     }
+   
+
 }
+

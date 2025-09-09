@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bistro Bliss Login</title>
+  
   <style>
+    
+
+
+
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
@@ -46,10 +52,25 @@
     @media (max-width: 480px) { .container { width: 90%; padding: 1.5rem; } }
   </style>
 
+
+@if(session('success'))
+<div class="alert">{{session('success')}}</div>
+<style>
+    .alert {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: lightgreen;
+    }
+</style>
+@endif
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
   <div class="container">
+
     <div class="logo"><span>BISTRO BLISS</span> KITCHEN</div>
     <p class="welcome">Welcome Back!<br>Login to continue with Bistro Bliss</p>
 
@@ -67,6 +88,7 @@
           </ul>
         </div>
       @endif
+
 
       <!-- Email -->
       <input type="email" name="email" class="form-input" placeholder="Email Address" required>

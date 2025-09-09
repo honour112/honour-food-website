@@ -17,7 +17,8 @@ class Order extends Model
         'payment_method',
         'total',
         'order_status',
-        'payment_status'
+        'payment_status',
+        'delivery_agent_id', // ✅ add this line
     ];
 
     // Each order has many order details
@@ -32,5 +33,11 @@ class Order extends Model
         return $this->belongsToMany(MenuItem::class, 'order_details')
                     ->withPivot('quantity', 'unit_price', 'line_total')
                     ->withTimestamps();
+    }
+
+    // Relationship: Order belongs to a delivery agent (User)
+    public function deliveryAgent()
+    {
+        return $this->belongsTo(User::class, 'delivery_agent_id');
     }
 }

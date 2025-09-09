@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderfrontdeskController;
 use App\Http\Controllers\OrderConfirmationController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\AssignDeliveryController;
 use App\Models\Order;
 // use app\Http\Controllers\admin\AdminManagemenuController;
 
@@ -42,9 +43,7 @@ Route::get('/booktable', [BookTableController::class, 'booktablePage'])->name('b
 Route::post('/booktable', [BookTableController::class, 'booktable'])->name('booktable-page');
 
 // Frontdesk Routes
-Route::get('/assigndelivery', function () {
-    return view('frontdesk.assigndelivery');
-})->name('assigndelivery');
+
 Route::get('/sidebar', function () {
     return view('frontdesk.sidebar');
 })->name('sidebar');
@@ -145,6 +144,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 // Admin dashboard (only accessible by logged-in admin)
 Route::get('/admin/dashboard', function () {
     return view('admin.Admindashboard'); // your admin dashboard Blade
@@ -175,3 +175,16 @@ Route::get('/delivery-dashboard', [DeliveryController::class, 'Showdelivery'])->
 // Delivery status routes
 Route::get('/delivery/status', [DeliveryController::class, 'showStatus'])->name('delivery.status');
 Route::post('/delivery/status/toggle', [DeliveryController::class, 'toggleStatus'])->name('delivery.status.toggle');
+  
+
+
+// Assign Delivery Routes
+
+Route::get('/assigndelivery', [AssignDeliveryController::class, 'assignDelivery'])->name('assigndelivery');
+Route::post('/frontdesk/assign-delivery/{orderId}', [AssignDeliveryController::class, 'assignToAgent'])->name('frontdesk.assign.toAgent');
+
+
+// mOCKS Delivery Agent Routes
+
+Route::get('/assign-delivery', [DeliveryController::class, 'dashboard'])->name('delivery.assign-delivery');
+Route::post('/delivery/update/{id}', [DeliveryController::class, 'updatePaymentStatus'])->name('delivery.update');

@@ -70,7 +70,7 @@
 
         <p><strong>Total Amount:</strong> {{ number_format($order->total, 0, ',', '.') }} FCFA</p>
         <p><strong>Payment Status:</strong> {{ ucfirst($order->payment_status) }}</p>
-        <p><strong>Order Type:</strong> {{ ucfirst($order->order_type ?? 'N/A') }}</p>
+        
 
         <p>We will notify you once your order is ready. If you have any questions, feel free to contact us at our support email.</p>
 
