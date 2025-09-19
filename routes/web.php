@@ -78,11 +78,10 @@ Route::post('/frontdesk/orders/{id}/decline', [OrderfrontdeskController::class, 
 Route::get('/send-confirmation/{order}', [OrderConfirmationController::class, 'confirmEmail'])
      ->name('order.confirmation');
 
+//payment status
 
-
-// Example: Send email for a specific order
-Route::get('/send-confirmation/{order}', [OrderConfirmationController::class, 'confirmEmail'])
-     ->name('order.confirmation');
+Route::post('/frontdesk/orders/{id}/payment', [App\Http\Controllers\OrderfrontdeskController::class, 'updatePaymentStatus'])
+    ->name('frontdesk.orders.updatePayment');
 
 
 
@@ -184,7 +183,8 @@ Route::get('/assigndelivery', [AssignDeliveryController::class, 'assignDelivery'
 Route::post('/frontdesk/assign-delivery/{orderId}', [AssignDeliveryController::class, 'assignToAgent'])->name('frontdesk.assign.toAgent');
 
 
-// mOCKS Delivery Agent Routes
+// New Route for Delivery Agents to view their assigned orders
 
-Route::get('/assign-delivery', [DeliveryController::class, 'dashboard'])->name('delivery.assign-delivery');
-Route::post('/delivery/update/{id}', [DeliveryController::class, 'updatePaymentStatus'])->name('delivery.update');
+Route::get('/delivery/assigned-orders', [App\Http\Controllers\DeliveryController::class, 'myAssignedOrders'])
+    ->middleware('auth')
+    ->name('delivery.assignedOrders');

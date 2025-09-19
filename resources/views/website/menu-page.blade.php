@@ -15,13 +15,14 @@
   <nav class="navbar">
     <!-- logo -->
     <div class="logo">
-  <img src="/assets/images/japanese-food (1).png" alt="Logo" />
+     <img src="/assets/images/japanese-food (1).png" alt="Logo" />
       <div class="Cuisine">
-  <img src="/assets/images/Cuisine.png" alt="Cuisine" />
+      <div class="logotext">Delice-237</div>
       </div>
     </div>
     <!-- Add overlay div for mobile navigation -->
-<div class="overlay" id="overlay">
+     
+    <div class="overlay" id="overlay">
 
     <!-- navigation links -->
     <div class="navigation" id="nav-links">
@@ -151,14 +152,14 @@
         </ul>
       </div>
     </div>
-    <!-- Right: Instagram Images -->
+     <!-- Right: Instagram Images -->
     <div class="footer-instagram">
       <h4>Follow Us On Instagram</h4>
       <div class="footer-insta-grid">
-  <img src="assets/images/Mask group.png" alt="egg" />
-  <img src="assets/images/Mask group (2).png" alt="fries" />
-  <img src="assets/images/Mask group (4).png" alt="potato" />
-  <img src="assets/images/pexels-ash-376464 1.png" alt="pie" />
+  <img src="assets\images\NewImages\eru.jpg" alt="egg" />
+  <img src="assets\images\NewImages\katikati.jpg" alt="fries" />
+  <img src="assets\images\NewImages\ndole.jpg" alt="potato" />
+  <img src="assets\images\NewImages\Meatpie.jpg" alt="pie" />
       </div>
     </div>
   </div>

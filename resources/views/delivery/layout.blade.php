@@ -23,7 +23,7 @@
             <div class="logo-img">
                 <img src="assets/images/icons/japanese-food (1).png" alt="">
             </div>
-            <div class="logo-text">Bistro Bliss</div>
+            <div class="logo-text">Delice-237</div>
         </div>
 
         <!-- User Profile -->
@@ -44,7 +44,7 @@
                 Dashboard
             </a>
 
-            <a href="{{ route('delivery.assign-delivery') }}" class="nav-item {{ Route::is('delivery.assign-delivery') ? 'active' : '' }}">
+            <a href="{{ route('delivery.assignedOrders') }}" class="nav-item {{ Route::is('delivery.assignedOrders') ? 'active' : '' }}">
                 <i class="fas fa-cogs"></i>
                 Assigned Orders
             </a>

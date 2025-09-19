@@ -18,7 +18,7 @@ class Order extends Model
         'total',
         'order_status',
         'payment_status',
-        'delivery_agent_id', // ✅ add this line
+        'delivery_agent_id',
     ];
 
     // Each order has many order details

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class AssignDeliveryController extends Controller
 {
@@ -33,4 +34,13 @@ class AssignDeliveryController extends Controller
 
         return redirect()->back()->with('success', 'Order assigned successfully!');
     }
+
+public function myAssignedOrders()
+    {
+        $user = Auth::user(); // Get the logged-in user
+        $userId = $user ? $user->id : null;
+        $orders = Order::where('delivery_agent_id', $userId)->get();
+
+    return view('delivery.myorders', compact('orders'));
+}
 }

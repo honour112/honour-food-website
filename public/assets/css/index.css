@@ -32,6 +32,10 @@
   align-items: center;  
   padding: 2rem 4rem;
 }
+.logoimg{
+  width:5rem;
+  border-radius: 2rem;
+}
 
 .logo {
   display: flex;
@@ -70,7 +74,15 @@
   border: 2px solid #23281a;
   letter-spacing: 0.01em;
   text-decoration: none;
-  
+
+
+}
+.logotext{
+  font-family:playfair display, serif;
+  font-size: 3.1rem;
+  font-weight: 700;
+  color: #474343;
+  font-style: italic;
 
 }
 .background {
@@ -946,7 +958,7 @@ body {
 .hero-banner-bg {
   position: absolute;
   inset: 0;
-  background: url('../assets/BG\ \(3\).png') center/cover no-repeat;
+  background: url('assets\images\NewImages\katikati.jpg') center/cover no-repeat;
   filter: brightness(0.5);
   z-index: 1;
 }
@@ -1867,5 +1879,7 @@ body {
         color: #0f0f0f;
         text-align: center;
         font-family: 'Playfair Display', serif;
+      
+      
       }
    

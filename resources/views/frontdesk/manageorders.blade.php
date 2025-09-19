@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>manage Orders</title>
+<title>Manage Orders</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="/assets/css/frontdeskpages.css">
 </head>
@@ -15,7 +15,7 @@
 <h2>Incoming Orders</h2>
 
 @if(session('success'))
-<div class="alert">{{session('success')}}</div>
+<div class="alert">{{ session('success') }}</div>
 <style>
     .alert {
         padding: 12px;
@@ -38,7 +38,7 @@
       <th>Total Amount</th>
       <th>Payment Status</th>
       <th>Order Status</th>
-      <th>Action</th>
+      <th>Manage Order</th>
     </tr>
   </thead>
   <tbody>
@@ -54,15 +54,24 @@
             @endforeach
         </td>
         <td>{{ number_format($order->total, 0, ',', '.') }} FCFA</td>
+
+        {{-- ✅ Payment Status --}}
         <td>
-            @if($order->payment_status === 'paid')
-                <i class="fas fa-check-circle paid"></i> Paid
-            @elseif($order->payment_status === 'unpaid')
-                <i class="fas fa-times-circle unpaid"></i> Unpaid
-            @else
-                <i class="fas fa-clock pending"></i> Pending
-            @endif
+            <form action="{{ route('frontdesk.orders.updatePayment', $order->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @if($order->payment_status === 'paid')
+                    <button type="submit" class="btn-paid" title="Click to mark Unpaid">
+                        <i class="fas fa-check-circle paid"></i> Paid
+                    </button>
+                @else
+                    <button type="submit" class="btn-unpaid" title="Click to mark Paid">
+                        <i class="fas fa-times-circle unpaid"></i> Unpaid
+                    </button>
+                @endif
+            </form>
         </td>
+
+        {{-- Order Status --}}
         <td>
             @if($order->order_status === 'accepted')
                 <i class="fas fa-check-circle paid"></i> Accepted
@@ -72,18 +81,20 @@
                 <i class="fas fa-clock pending"></i> Pending
             @endif
         </td>
+
+        {{--  Actions --}}
         <td>
           <div class="buttons">
             <form action="{{ route('frontdesk.orders.accept', $order->id) }}" method="POST" style="display:inline;">
                 @csrf
-                <button type="submit" class="edit">
+                <button type="submit" class="edit" title="Accept Order">
                     <i class="fa-solid fa-check"></i>
                 </button>
             </form>
 
             <form action="{{ route('frontdesk.orders.decline', $order->id) }}" method="POST" style="display:inline;">
                 @csrf
-                <button type="submit" class="delete">
+                <button type="submit" class="delete" title="Decline Order">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </form>
@@ -97,4 +108,7 @@
     @endforelse
   </tbody>
 </table>
+
+</body>
+</html>
 @endsection

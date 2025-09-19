@@ -13,9 +13,9 @@
   <nav class="navbar">
     <!-- logo -->
     <div class="logo">
-  <img src="/assets/images/japanese-food (1).png" alt="Logo" />
+     <img src="/assets/images/japanese-food (1).png" alt="Logo" />
       <div class="Cuisine">
-  <img src="/assets/images/Cuisine.png" alt="Cuisine" />
+      <div class="logotext">Delice-237</div>
       </div>
     </div>
     <!-- Add overlay div for mobile navigation -->
@@ -227,7 +227,7 @@
 
       <!-- Main Blog Card -->
       <div class="blog-card blog-card--main">
-  <img src="/assets/images/pexels-andra-918581 1 (1).png" alt="Burger" class="blog-img">
+  <img src="assets\images\NewImages\Meatpie.jpg" alt="Burger" class="blog-img">
         <div class="blog-content">
           <span class="blog-date">January 3, 2023</span>
           <h3 class="blog-title">The secret tips &amp; tricks to prepare a perfect burger &amp; pizza for our customers</h3>
@@ -240,34 +240,34 @@
       </div>
       <!-- Blog Card 2 -->
       <div class="blog-card">
-  <img src="/assets/images/Mask group.png" alt="French Fries" class="blog-img">
+  <img src="assets\images\NewImages\ndole.jpg" alt="French Fries" class="blog-img">
         <div class="blog-content">
           <span class="blog-date">January 3, 2023</span>
-          <h3 class="blog-title">How to prepare the perfect french fries in an air fryer</h3>
+          <h3 class="blog-title">How to prepare the perfect Ndole</h3>
         </div>
       </div>
       <!-- Blog Card 3 -->
       <div class="blog-card">
-  <img src="/assets/images/Mask group (1).png" alt="Chicken Tenders" class="blog-img">
+  <img src="assets\images\NewImages\fufuegusi.jpg" alt="Chicken Tenders" class="blog-img">
         <div class="blog-content">
           <span class="blog-date">January 3, 2023</span>
-          <h3 class="blog-title">How to prepare delicious chicken tenders</h3>
+          <h3 class="blog-title">How to prepare delicious fufu</h3>
         </div>
       </div>
       <!-- Blog Card 4 -->
       <div class="blog-card">
-  <img src="/assets/images/pexels-sebastian-coman-photography-3791088 1.png" alt="Cheesecake" class="blog-img">
+  <img src="assets\images\NewImages\katikati.jpg" alt="Cheesecake" class="blog-img">
         <div class="blog-content">
           <span class="blog-date">January 3, 2023</span>
-          <h3 class="blog-title">7 delicious cheesecake recipes you can prepare</h3>
+          <h3 class="blog-title">7 delicious kati kati recipes you can prepare</h3>
         </div>
       </div>
       <!-- Blog Card 5 -->
       <div class="blog-card">
-  <img src="/assets/images/Mask group (2).png" alt="Pizza" class="blog-img">
+  <img src="assets\images\NewImages\eru.jpg" alt="Pizza" class="blog-img">
         <div class="blog-content">
           <span class="blog-date">January 3, 2023</span>
-          <h3 class="blog-title">5 great pizza restaurants you should visit this city</h3>
+          <h3 class="blog-title">5 great eru you should visit delice 237</h3>
         </div>
       </div>
     </div>
@@ -282,7 +282,7 @@
     <div class="footer-brand">
       <div class="footer-logo-row">
   <img src="/assets/images/japanese-food (2).png" alt="Bistro Bliss Logo" class="footer-logo" />
-        <span class="footer-brand-name">Bistro Bliss</span>
+        <span class="footer-brand-name">Delice237</span>
       </div>
       <p class="footer-desc">
         In the new era of technology we look a<br>
@@ -327,10 +327,10 @@
     <div class="footer-instagram">
       <h4>Follow Us On Instagram</h4>
       <div class="footer-insta-grid">
-  <img src="assets/images/Mask group.png" alt="egg" />
-  <img src="assets/images/Mask group (2).png" alt="fries" />
-  <img src="assets/images/Mask group (4).png" alt="potato" />
-  <img src="assets/images/pexels-ash-376464 1.png" alt="pie" />
+  <img src="assets\images\NewImages\eru.jpg" alt="egg" />
+  <img src="assets\images\NewImages\katikati.jpg" alt="fries" />
+  <img src="assets\images\NewImages\ndole.jpg" alt="potato" />
+  <img src="assets\images\NewImages\Meatpie.jpg" alt="pie" />
       </div>
     </div>
   </div>

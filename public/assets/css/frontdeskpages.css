@@ -124,4 +124,47 @@ body {
       text-align: left;
       font-weight: bold;
     }
-  }
+  }/*  Payment Buttons */
+.btn-paid {
+  background: #76f7a1;      /* green */
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-paid:hover {
+  background: #218838;
+}
+
+.btn-unpaid {
+  background: #f0949d;      /* red */
+  color: rgb(240, 235, 235);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-unpaid:hover {
+  background: #c82333;
+}
+
+
+.paid {
+  color: #28a745;
+}
+.unpaid {
+  color: #dc3545;
+}
+.pending {
+  color: #ffc107;
+}
+

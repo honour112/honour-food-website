@@ -14,9 +14,9 @@
   <nav class="navbar">
     <!-- logo -->
     <div class="logo">
-  <img src="/assets/images/japanese-food (1).png" alt="Logo" />
+     <img src="/assets/images/japanese-food (1).png" alt="Logo" />
       <div class="Cuisine">
-  <img src="/assets/images/Cuisine.png" alt="Cuisine" />
+      <div class="logotext">Delice-237</div>
       </div>
     </div>
     <!-- Add overlay div for mobile navigation -->
@@ -56,7 +56,7 @@
   <img src="/assets/images/img (2).png" alt="Healthy Food" class="healthy-img" />
   </div>
   <div class="healthy-text-col">
-    <h2>We Provide Healthy Food for your Family</h2>
+    <h2>We Provide Healthy Food for you</h2>
     <p>
       <strong>
         We provide healthy food for your family. Our story began with a vision to create a unique dining experience that merges fine dining, exceptional service, and a vibrant ambiance. Rooted in city's rich culinary culture, we aim to honor our local roots while infusing a global palate.
@@ -65,8 +65,8 @@
     <p>
       At place, we believe that dining is not just about food, but also about the overall experience. Our staff, renowned for their warmth and dedication, strives to make every visit an unforgettable event.<br>
       <b>(414) 857 - 0107</b><br>
-      <b>happytummy@restaurant.com</b><br>
-      <b>837 W. Marshall Lane Marshalltown, IA 50158, Los Angeles</b>
+      <b>delice237.restaurant.com</b><br>
+      <b>Douala Cameroon</b>
     </p>
   </div>
 </div>
@@ -76,13 +76,14 @@
 <section class="hero-banner">
   <div class="hero-banner-bg"></div>
   <div class="hero-banner-content">
+    <img src="assets\images\NewImages\katikati.jpg" alt="food">
     
-    <video width="100%" controls autoplay loop>
+    <!-- <video width="100%" controls autoplay loop>
       <source src="/assets/videos/5a8604fe-067a-4b84-bf89-19acdd46ecb1.webm" type="video/webm">
     <source src="/assets/videos/5a8604fe-067a-4b84-bf89-19acdd46ecb1.mp4" type="video/mp4">
   
     Your browser does not support HTML video.
-  </video>
+  </video> -->
 
     </button>
     <h1>Feel the authentic &amp;<br>original taste from us</h1>
@@ -263,14 +264,14 @@
         </ul>
       </div>
     </div>
-    <!-- Right: Instagram Images -->
+     <!-- Right: Instagram Images -->
     <div class="footer-instagram">
       <h4>Follow Us On Instagram</h4>
       <div class="footer-insta-grid">
-  <img src="/assets/images/Mask group.png" alt="egg" />
-  <img src="/assets/images/Mask group (2).png" alt="fries" />
-  <img src="/assets/images/Mask group (4).png" alt="potato" />
-  <img src="/assets/images/pexels-ash-376464 1.png" alt="pie" />
+  <img src="assets\images\NewImages\eru.jpg" alt="egg" />
+  <img src="assets\images\NewImages\katikati.jpg" alt="fries" />
+  <img src="assets\images\NewImages\ndole.jpg" alt="potato" />
+  <img src="assets\images\NewImages\Meatpie.jpg" alt="pie" />
       </div>
     </div>
   </div>

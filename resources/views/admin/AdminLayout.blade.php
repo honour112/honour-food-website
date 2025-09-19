@@ -23,7 +23,7 @@
             <div class="logo-img">
                 <img src="/assets/images/icons/japanese-food (1).png" alt="Logo">
             </div>
-            <div class="logo-text">Bistro Bliss</div>
+            <div class="logo-text">Delice-237</div>
         </div>
 
         <!-- User Profile -->

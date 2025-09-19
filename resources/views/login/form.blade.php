@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bistro Bliss Login</title>
+  <title>Delice Login</title>
   
   <style>
     
@@ -71,8 +71,8 @@
 <body>
   <div class="container">
 
-    <div class="logo"><span>BISTRO BLISS</span> KITCHEN</div>
-    <p class="welcome">Welcome Back!<br>Login to continue with Bistro Bliss</p>
+    <div class="logo"><span>Delice-237</span></div>
+    <p class="welcome">Welcome Back!<br>Login to continue with Delice-237</p>
 
     <!-- Login Form -->
     <form method="POST" action="{{ route('login.submit') }}">
@@ -108,7 +108,7 @@
       <button type="submit" class="btn">Log In</button>
     </form>
 
-    <p class="tagline">bistro bliss the quality of real taste</p>
+    <p class="tagline">Delice-237 the quality of real taste</p>
 
     <div class="socials">
       <a href="#"><i class="fab fa-twitter"></i></a>

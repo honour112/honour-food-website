@@ -10,7 +10,7 @@
         <div class="logo-img">
             <img src="{{ asset('assets/images/icons/japanese-food (1).png') }}" alt="">
         </div>
-        <div class="logo-text">Bistro Bliss</div>
+        <div class="logo-text">Delice-237</div>
     </div>
 
     <!-- User Profile -->

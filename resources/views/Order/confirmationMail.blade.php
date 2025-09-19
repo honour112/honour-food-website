@@ -75,7 +75,7 @@
         <p>We will notify you once your order is ready. If you have any questions, feel free to contact us at our support email.</p>
 
         <div class="footer">
-            &copy; {{ date('Y') }} bistro bliss. All rights reserved.
+            &copy; {{ date('Y') }} Delice 237. All rights reserved.
         </div>
     </div>
 </body>
