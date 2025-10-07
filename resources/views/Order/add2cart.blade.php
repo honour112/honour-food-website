@@ -13,7 +13,7 @@
         <header class="header">
             <div class="header-left">
                 <h1> 
-                 <img src="/assets/images/icons/japanese-food (1).png" alt="Bistro Bliss Logo" class="logo"> Bistro Bliss</h1>
+                 <img src="/assets/images/icons/japanese-food (1).png" alt="Bistro Bliss Logo" class="logo">Delice 237</h1>
             </div>
             <a href="{{ route('menu-page') }}" class="nav-btn">
                 <i class="fa-solid fa-utensils"></i> Continue Shopping

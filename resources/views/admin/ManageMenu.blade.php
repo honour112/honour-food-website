@@ -2,16 +2,16 @@
 
 @section('content')
 @if(session('success'))
-<div class="alert">{{session('success')}}</div>
-<style>
-    .alert {
-        padding: 12px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: lightgreen;
-    }
-</style>
+    <div class="alert">{{ session('success') }}</div>
+    <style>
+        .alert {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: lightgreen;
+        }
+    </style>
 @endif
 
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@300;400;500;600;700;800&family=Rufina:wght@400;700&family=Racing+Sans+One:wght@400&family=Radio+Canada:wght@300;400;500;600;700&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
@@ -27,40 +27,48 @@
       <th>Description</th>
       <th>Price (FCFA)</th>
       <th>Image</th>
+      <th>Category</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($menuItems as $item)
-    <tr>
-        <td>{{ $item->name }}</td>
-        <td>{{ $item->description }}</td>
-        <td>{{ number_format($item->price, 0, ',', ' ') }} FCFA</td>
-        <td>
-          @if($item->image)
-            <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->name }}" width="70" height="70" style="border-radius:8px;">
-          @else
-            <span>Image displayed in Menu Page</span>
-          @endif
-        </td>
-        <td>
-          <div class="buttons">
-            <!-- Delete Button -->
-            <form action="{{ route('menu.destroy', $item->id) }}" method="POST" style="display:inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="delete">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </form>
-            <!-- Edit Button
-            <button type="button" class="edit">
-                <i class="fa-solid fa-pen-to-square"></i>
-            </button> -->
-          </div>
-        </td>
-    </tr>
-    @endforeach
+    @if(isset($menuItems) && $menuItems->count() > 0)
+        @foreach($menuItems as $item)
+        <tr>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->description }}</td>
+            <td>{{ number_format($item->price, 0, ',', ' ') }} FCFA</td>
+            <td>
+              @if($item->image_url)
+                <img src="{{ $item->image_url }}" alt="{{ $item->name }}" width="70" height="70" style="border-radius:8px;">
+              @else
+                <span>No Image</span>
+              @endif
+            </td>
+            <td>{{ $item->category }}</td>
+            <td>
+              <div class="buttons">
+                <!-- Delete Button -->
+                <form action="{{ route('menu.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+                <!-- Edit Button
+                <a href="{{ route('menu.edit', $item->id) }}" class="edit">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a> -->
+              </div>
+            </td>
+        </tr>
+        @endforeach
+    @else
+        <tr>
+            <td colspan="6" style="text-align:center;">No menu items found.</td>
+        </tr>
+    @endif
   </tbody>
 </table>
 
@@ -91,6 +99,11 @@
         <label>
             <span>Price (FCFA)</span>
             <input type="number" name="price" step="0.01" min="0" value="{{ old('price') }}" placeholder="0.00" required>
+        </label>
+
+        <label>
+            <span>Category</span>
+            <input type="text" name="category" value="{{ old('category') }}" placeholder="lunch, breakfast, dinner" required>
         </label>
 
         <label>

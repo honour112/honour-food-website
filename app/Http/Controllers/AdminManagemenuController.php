@@ -7,11 +7,11 @@ use App\Models\MenuItem;
 
 class AdminManagemenuController extends Controller
 {
-    // Show the create menu form
-
-    public function AddMenu()
+    // Show the menu page (both add form and list)
+    public function ManageMenu()
     {
-        return view('Admin.ManageMenu');
+        $menuItems = MenuItem::all();
+        return view('Admin.ManageMenu', compact('menuItems'));
     }
 
     // Store a new menu item
@@ -22,6 +22,7 @@ class AdminManagemenuController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'image' => 'required|image|max:2048',
+            'category' => 'required|string|max:255'
         ]);
 
         $path = $request->file('image')->store('menus', 'public');
@@ -31,24 +32,18 @@ class AdminManagemenuController extends Controller
             'description' => $validated['description'] ?? '',
             'price' => $validated['price'],
             'status' => 'active',
+            'category' => $validated['category'],
             'image_url' => '/storage/' . $path,
         ]);
 
         return redirect()->route('ManageMenu')->with('success', 'Menu item created successfully!');
     }
 
-    // Show all items
-    public function showMenuItems()
-    {
-        $menuItems = MenuItem::all();
-        return view('Admin.ManageMenu', compact('menuItems'));
-    }
-
     // Show edit form
     public function edit($id)
     {
         $menuItem = MenuItem::findOrFail($id);
-        return view('admin.EditMenu', compact('menuItem')); 
+        return view('Admin.EditMenu', compact('menuItem')); 
     }
 
     // Update item
@@ -66,7 +61,7 @@ class AdminManagemenuController extends Controller
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('menus', 'public');
-            $menuItem->image_url = '/storage/' . $path; // fixed to match DB
+            $menuItem->image_url = '/storage/' . $path;
         }
 
         $menuItem->save();
@@ -79,8 +74,7 @@ class AdminManagemenuController extends Controller
     {
         $menuItem = MenuItem::findOrFail($id);
         $menuItem->delete();
-        
 
         return redirect()->back()->with('success', 'Menu item deleted successfully!');
     }
-}  
+}
