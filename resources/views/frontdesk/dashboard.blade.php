@@ -143,7 +143,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="view-all-btn">view all</a>
+        <a href="{{ route('reviews') }}" class="view-all-btn">view all</a>
     </div>
 
     <!-- Booked Tables (Side Section) -->

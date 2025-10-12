@@ -54,7 +54,7 @@
                 My Status
             </a>
 
-            <a href="{{ route('reviews') }}" class="nav-item {{ Route::is('reviews') ? 'active' : '' }}">
+            <a href="{{ route('delivery.reports') }}" class="nav-item {{ Route::is('delivery.reports') ? 'active' : '' }}">
                 <i class="far fa-file-alt"></i>
                 Reports
             </a>
@@ -95,7 +95,7 @@
         <header class="header">
             <div class="header-left">
                 <h1>Welcome, {{ Auth::user()->name }}</h1>
-                <p>Bistro Bliss Restaurant - Delivery Dashboard</p>
+                <p>delice 237 - Delivery Dashboard</p>
             </div>
             <div class="header-actions">
                 <button class="btn btn-outline" onclick="location.reload(true);">

@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderConfirmationController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\AssignDeliveryController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 // ==================== Website Routes ====================
@@ -87,3 +88,6 @@ Route::middleware(['auth', 'role:delivery'])->group(function () {
     Route::post('/delivery/status/toggle', [DeliveryController::class, 'toggleStatus'])->name('delivery.status.toggle');
     Route::get('/delivery/assigned-orders', [DeliveryController::class, 'myAssignedOrders'])->name('delivery.assignedOrders');
 });
+// Reports
+Route::get('/admin/reports', [ReportController::class, 'AdminReport'])->name('admin.reports');
+Route::get('/delivery/reports',[ReportController::class, 'DeliveryReport'])->name('delivery.reports');

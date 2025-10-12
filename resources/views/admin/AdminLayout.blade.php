@@ -52,7 +52,7 @@
                 Manage Users
             </a>
 
-            <a href="{{ route('reviews') }}" class="nav-item {{ Route::is('reviews') ? 'active' : '' }}">
+            <a href="{{ route('admin.reports') }}" class="nav-item {{ Route::is('admin.reports') ? 'active' : '' }}">
                 <i class="far fa-file-alt"></i>
                 Reports
             </a>
@@ -91,7 +91,7 @@
         <header class="header">
             <div class="header-left">
                 <h1>Admin Dashboard</h1>
-                <p>Bistro Bliss Restaurant</p>
+                <p>Delice 237 Restaurant</p>
             </div>
             <div class="header-actions">
                 <button class="btn btn-outline" onclick="location.reload(true);">
