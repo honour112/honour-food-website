@@ -8,6 +8,23 @@
   <link rel="stylesheet" href="/assets/css/menu.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>   
+<!-- ADDITIONAL STYLE  -->
+<style>
+.menu-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.whatsapp-order-btn {
+  color: #25D366;
+  font-size: 22px;
+}
+
+.whatsapp-order-btn:hover {
+  color: #1ebe5d;
+}
+</style>
 
 <body>
   <!-- NAVBAR -->
@@ -58,10 +75,21 @@
           <div class="menu-name">{{ $item->name }}</div>
           <div class="menu-desc">{{ $item->description }}</div>
 
+          <div class="menu-actions">
           <a href="{{ route('add2cart.add', $item->id) }}" class="add-to-cart-icon">
             <i class="fa-solid fa-cart-plus"></i>
           </a>
-          <h4>Add to cart</h4>
+
+          <a href="#"
+            class="whatsapp-order-btn"
+            data-name="{{ $item->name }}"
+            data-price="{{ number_format($item->price, 0, ',', '.') }}">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+
+       <h4>Add to cart / Pay</h4>
+
         </div>
       @endforeach
     </div>
@@ -162,10 +190,36 @@
               card.style.display = "none";
               card.classList.remove("fade-in");
             }
+
+
+            
           });
         });
       });
     });
   </script>
+  <script>
+  document.querySelectorAll('.whatsapp-order-btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const name = this.dataset.name;
+      const price = this.dataset.price;
+
+      const message =
+        `Hello Delice-237 👋%0A%0A` +
+        `I want to order:%0A` +
+        `• ${name}%0A` +
+        `Price: ${price} FCFA%0A%0A` +
+        `Please help me complete payment.`;
+
+      const phone = "678399177";
+      const url = `https://wa.me/${phone}?text=${message}`;
+
+      window.open(url, '_blank');
+    });
+  });
+</script>
+
 </body>
 </html>

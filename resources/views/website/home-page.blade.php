@@ -28,7 +28,7 @@
       <a href="{{ route('menu-page') }}">Menu</a>
       <a href="{{ route('review-page') }}">Review</a>
       <a href="{{ route('contact-page') }}" >Contact</a>
-      <a href="{{ route('Loginform') }}">Dashboard</a>
+      <!-- <a href="{{ route('Loginform') }}">Dashboard</a> -->
         </div>
     </div>
         
