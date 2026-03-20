@@ -52,6 +52,7 @@
 
     <img src="/assets/images/newham.png" alt="Menu" class="hamburger-icon" id="hamburger-button" />
   </nav>
+  
 
   <!-- MENU SECTION -->
   <section class="menu-section">

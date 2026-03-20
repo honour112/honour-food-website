@@ -81,8 +81,12 @@ class Add2CartController extends Controller
             'phone'          => 'required|string|max:20',
             'location'       => 'nullable|string|max:500',
             'email'          => 'nullable|email|max:255',
-            'payment_method' => 'required|string'
+            'payment_method' => 'required|string',
+            'order_type'     => 'required|in:delivery,inhouse' // Added this
+    
+    
         ]);
+        
 
         $cart = session()->get('cart');
 
@@ -103,6 +107,7 @@ class Add2CartController extends Controller
             'total'          => $total,
             'order_status'   => 'pending',
             'payment_status' => 'unpaid',
+            'ordertype'      => $request->order_type, // Save order type
         ]);
 
         // Create Order Details via relationship

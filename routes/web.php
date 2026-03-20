@@ -15,6 +15,7 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\AssignDeliveryController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 // ==================== Website Routes ====================
 Route::get('/', fn() => view('website.home-page'))->name('home-page');
@@ -23,6 +24,9 @@ Route::get('/menu', [MenuPageController::class, 'showMenuItems'])->name('menu-pa
 Route::get('/review', [ReviewPageController::class,'ReviewPage'])->name('review-page');
 Route::post('/review', [ReviewPageController::class,'storeReview'])->name('store-review');
 Route::get('/contact', fn() => view('website.contact-page'))->name('contact-page');
+
+
+Route::post('/orders/{id}/mark-as-paid', [OrderController::class, 'confirmPayment']);
 
 Route::get('/booktable', [BookTableController::class, 'booktablePage'])->name('booktable-page');
 Route::post('/booktable', [BookTableController::class, 'booktable'])->name('booktable-page');
@@ -91,3 +95,13 @@ Route::middleware(['auth', 'role:delivery'])->group(function () {
 // Reports
 Route::get('/admin/reports', [ReportController::class, 'AdminReport'])->name('admin.reports');
 Route::get('/delivery/reports',[ReportController::class, 'DeliveryReport'])->name('delivery.reports');
+
+
+// Route::get('/admin/report',[ReportController::class,'AdminReport'])->name('admin.report');
+
+Route::get('/admin/report/download',[ReportController::class,'downloadReport'])->name('report.download');
+
+
+// Thank you page 
+
+Route::get('/thanks', [OrderController::class, 'showThanks'])->name('thanks-page');

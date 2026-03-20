@@ -18,6 +18,7 @@ class Order extends Model
         'total',
         'order_status',
         'payment_status',
+        'ordertype',
         'delivery_agent_id',
     ];
 

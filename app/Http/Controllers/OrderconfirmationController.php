@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderConfirmationMail; // <-- make sure to import this
+use App\Mail\OrderConfirmationMail;
 
 
 class OrderConfirmationController extends Controller

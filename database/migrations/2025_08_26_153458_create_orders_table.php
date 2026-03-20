@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('email')->nullable();
             $table->string('payment_method');
+            $table->enum('ordertype', ['delivery', 'inhouse'])->default('delivery');
             $table->decimal('total', 10, 2);
             $table->enum('order_status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->enum('payment_status', ['unpaid', 'paid'])->default('unpaid');
