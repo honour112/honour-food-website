@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,17 +101,107 @@
     </div>
   </div>
 </section>
+
+
+
+
+  
 <script src="/assets/js/script.js"></script> 
+
+  <div id="global-loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p>Preparing your experience...</p>
+    </div>
+  </div>
+
+  <div class="language-float-wrapper">
+    <div class="toggle-button-cover">
+      <div id="button-lang" class="button r">
+        <input class="checkbox" type="checkbox" id="lang-checkbox" onchange="toggleLanguage(this)">
+        <div class="knobs"></div>
+        <div class="layer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <script type="text/javascript">
+    // 1. Initialize Google Translate
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // 2. Optimized Loader Functions
+    function showLoader() {
+      const loader = document.getElementById('global-loader');
+      if (loader) loader.classList.add('loader-visible');
+    }
+
+    function hideLoader() {
+      const loader = document.getElementById('global-loader');
+      if (loader) loader.classList.remove('loader-visible');
+    }
+
+    // 3. Language Toggle - This fixes the button!
+    function toggleLanguage(checkbox) {
+      showLoader(); 
+      
+      const lang = checkbox.checked ? 'fr' : 'en';
+      const selectField = document.querySelector('.goog-te-combo');
+      
+      if (selectField) {
+        selectField.value = lang;
+        selectField.dispatchEvent(new Event('change'));
+        localStorage.setItem('selectedLanguage', lang);
+      }
+      
+      // Hide loader after a quick blink
+      setTimeout(hideLoader, 500); 
+    }
+
+    // 4. Memory: Auto-apply language on load
+    function applyStoredLanguage() {
+      const storedLang = localStorage.getItem('selectedLanguage');
+      const checkbox = document.getElementById('lang-checkbox');
+
+      const checkInterval = setInterval(() => {
+        const selectField = document.querySelector('.goog-te-combo');
+        if (selectField) {
+          clearInterval(checkInterval);
+          if (storedLang) {
+            if (checkbox) checkbox.checked = (storedLang === 'fr');
+            if (selectField.value !== storedLang) {
+              selectField.value = storedLang;
+              selectField.dispatchEvent(new Event('change'));
+            }
+          }
+        }
+      }, 100);
+      setTimeout(() => clearInterval(checkInterval), 5000);
+    }
+
+    window.addEventListener('load', applyStoredLanguage);
+  </script>
+
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
+</html>
 
 <!-- Footer Section Start -->
+
 <footer class="footer">
   <div class="footer-container">
     <!-- Left: Logo & Description -->
     <div class="footer-brand">
       <div class="footer-logo-row">
   <img src="/assets/images/japanese-food (2).png" alt="Bistro Bliss Logo" class="footer-logo" />
-        <span class="footer-brand-name">Bistro Bliss</span>
+        <span class="footer-brand-name">Delice237</span>
       </div>
       <p class="footer-desc">
         In the new era of technology we look a<br>
@@ -151,7 +242,7 @@
         </ul>
       </div>
     </div>
-     <!-- Right: Instagram Images -->
+    <!-- Right: Instagram Images -->
     <div class="footer-instagram">
       <h4>Follow Us On Instagram</h4>
       <div class="footer-insta-grid">
