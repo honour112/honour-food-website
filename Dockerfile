@@ -14,3 +14,5 @@ RUN composer install --no-dev --optimize-autoloader
 
 # IMPORTANT: use Laravel public folder properly
 CMD php -S 0.0.0.0:10000 -t public
+
+RUN php artisan migrate --force
