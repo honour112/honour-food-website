@@ -13,17 +13,26 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy project files
 COPY . .
 
-# Install dependencies
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Fix Laravel permissions (VERY IMPORTANT on Render)
 RUN chmod -R 775 storage bootstrap/cache
 
-# Optimize Laravel
+# 🔥 Clear and rebuild Laravel cache (FIXES YOUR ISSUE)
+RUN php artisan config:clear || true
+RUN php artisan cache:clear || true
+RUN php artisan route:clear || true
+RUN php artisan view:clear || true
+
+# Rebuild cache cleanly
 RUN php artisan config:cache || true
 RUN php artisan route:cache || true
 
-# ⚠️ DO NOT run migrate here (can break builds on Render)
+# ⚠️ Do NOT run migrate here (Render build phase issue)
 
-# Start server (Render needs this port)
+# Expose port (Render uses 10000)
+EXPOSE 10000
+
+# Start Laravel server
 CMD php -S 0.0.0.0:10000 -t public
